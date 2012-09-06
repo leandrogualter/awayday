@@ -13,6 +13,7 @@ gem "heroku"
 group :test do
   gem "rspec"
   gem "ZenTest"
+  gem "autotest-fsevent"
   gem "rack-test"
   gem "cucumber"
   gem "capybara"
