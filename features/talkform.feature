@@ -11,46 +11,46 @@ Feature: Talk submission form
     And my talk proposal will be on the list of proposals
     And I will see a confirmation that my proposal has been submitted
 
-  Scenario: Potential speaker registers his workshop
+  Scenario: Potential speaker registers his Lightning Talk
     Given my name is Carlo Paroli and my email is carlo.paroli@awayday.com
-    And my workshop proposal has the following information
+    And my lightning talk proposal has the following information
     | Title       | Summary                                               | Category  | Duration |
-    | My Workshop | My workshop about babies that needs to explain enough | Technical | 90mins   |
-    When I submit my workshop proposal
+    | My Lightning Talk | My Lightning Talk about babies that needs to explain enough | Technical | 15mins   |
+    When I submit my lightning talk proposal
     Then I will be in the list of possible presenters
-    And my workshop proposal will be on the list of proposals
+    And my lightning talk proposal will be on the list of proposals
     And I will see a confirmation that my proposal has been submitted
 
   Scenario: Potential speaker try to register with short summary
     Given my name is Carlo Paroli and my email is carlo.paroli@awayday.com
-    And my workshop proposal has the following information
+    And my lightning talk proposal has the following information
     | Title       | Summary                   | Category  | Duration |
-    | My Workshop | My really quick workshop  | Technical | 90mins   |
-    When I submit my workshop proposal
+    | My Lightning Talk | My really quick lightning talk  | Technical | 15mins   |
+    When I submit my lightning talk proposal
     Then I wont be in the list of possible presenters
-    And my workshop proposal wont be on the list of proposals
+    And my lightning talk proposal wont be on the list of proposals
     And I will see a message stating that something went wrong
     And a message saying that the summary is too short
 
   Scenario: Potential speaker forget his name
     Given my name is  and my email is carlo.paroli@awayday.com
-    And my workshop proposal has the following information
+    And my lightning talk proposal has the following information
     | Title       | Summary                   | Category  | Duration |
-    | My Workshop | My talk about talks that need a big enough summary! | Technical | 90mins   |
-    When I submit my workshop proposal
+    | My Lightning Talk | My lightning talk about talks that need a big enough summary! | Technical | 15mins   |
+    When I submit my lightning talk proposal
     Then I wont be in the list of possible presenters
-    And my workshop proposal wont be on the list of proposals
+    And my lightning talk proposal wont be on the list of proposals
     And I will see a message stating that something went wrong
     And a message saying that I forgot my name
 
   Scenario: Potential speaker forget his name and the title of the presentation
     Given my name is  and my email is carlo.paroli@awayday.com
-    And my workshop proposal has the following information
+    And my lightning talk proposal has the following information
     | Title       | Summary                   | Category  | Duration |
-    |             | My talk about talks that need a big enough summary! | Technical | 90mins   |
-    When I submit my workshop proposal
+    |             | My talk about talks that need a big enough summary! | Technical | 15mins   |
+    When I submit my lightning talk proposal
     Then I wont be in the list of possible presenters
-    And my workshop proposal wont be on the list of proposals
+    And my lightning talk proposal wont be on the list of proposals
     And I will see a message stating that something went wrong
     And a message saying that I forgot my name
     And a message saying that I forgot the title of the talk

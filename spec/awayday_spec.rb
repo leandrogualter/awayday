@@ -78,20 +78,20 @@ describe 'The Awayday Submission App' do
   end
 
   it "lists the talks" do
+    lightningtalk = setup_a_lightningtalk
     talk = setup_a_talk
-    workshop = setup_a_workshop
 
     get '/talks'
 
     last_response.should be_ok
 
+    should_have_talk lightningtalk
     should_have_talk talk
-    should_have_talk workshop
   end
 
   it "downloads the list of talks in csv format" do
+    lightningtalk = setup_a_lightningtalk
     talk = setup_a_talk
-    workshop = setup_a_workshop
 
     get '/talks.csv'
 
@@ -100,8 +100,21 @@ describe 'The Awayday Submission App' do
     last_response['Content-Disposition'].should =~ /attachment; filename=\"talks_\d{1,2}-\d{1,2}-\d{4}\.csv\"/
 
     should_have_csv_header
+    should_have_csv_row lightningtalk
     should_have_csv_row talk
-    should_have_csv_row workshop
+  end
+
+  def setup_a_lightningtalk
+    lightningtalker = Presenter.new :name => "Anna Lightning", 
+                                    :email => "anna.thunder@awayday.com"
+    lightningtalk = Talk.new :title => "Kaboom, Thunder, Sparks & Life",
+                        :summary => "Thunder Thunder Thunder Thunder Thunder Thunder Thunder",
+                        :category => "Hobbies",
+                        :duration => 15
+    lightningtalker.talks << lightningtalk
+    lightningtalker.save!
+
+    lightningtalk
   end
 
   def setup_a_talk
@@ -117,17 +130,6 @@ describe 'The Awayday Submission App' do
     talk
   end
 
-  def setup_a_workshop
-    workshoper = Presenter.new :name => "Anna Workshop", :email => "anna.workshop@awayday.com"
-    workshop = Talk.new :title => "The Workshop",
-                        :summary => "Workshop Stuff Workshop Stuff Workshop Stuff Workshop",
-                        :category => "Hobbies",
-                        :duration => "90"
-    workshoper.talks << workshop
-    workshoper.save!
-
-    workshop
-  end
 
   def should_have_talk(talk)
     last_response.body.should include("#{talk.presenter.name}")

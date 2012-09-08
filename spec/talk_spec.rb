@@ -57,7 +57,7 @@ describe 'A Talk' do
     @talk.should_not be_valid
   end
 
-  it "should not be valid if duration is not 45 or 90 mins" do
+  it "should not be valid if duration is not 15 or 45 mins" do
     @talk.duration = 60
     @talk.should_not be_valid
   end
