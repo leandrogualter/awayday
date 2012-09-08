@@ -11,6 +11,7 @@ to install the dependencies of the project:
 
       bundle
 
-and, finally, start the server:
+and, finally, start mongodb and the app server:
 
+      mongod run --config /usr/local/etc/mongod.conf &
       rackup -D
