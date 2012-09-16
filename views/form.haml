@@ -15,6 +15,6 @@
     %label{:for=>'duration'} Duration
     #duration
       - durations.each do |type, duration|
-        %input{:id=>"#{duration}mins", :type=>"radio", :name=>"duration", :value=>"#{duration}", :checked => duration.eql?(params[:duration].to_i) || duration.eql?(45),  :required => true}
+        %input{:id=>"#{duration}mins", :type=>"radio", :name=>"duration", :value=>"#{duration}", :checked => duration.eql?(params[:duration].to_i) || duration.eql?(15),  :required => true}
         %label{:for=>"#{duration}mins"} #{type.capitalize} (#{duration}mins)
     %input.green.button{:type=>'submit', :value=> 'Submit'}
