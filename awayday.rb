@@ -26,6 +26,11 @@ class AwayDayApp < Sinatra::Base
     css_compression :sass
   end
 
+  helpers do
+    include Rack::Utils
+    alias_method :h, :escape_html
+  end
+
   after do
     session[:params], session[:errors] = {}, {} unless status == 302
   end

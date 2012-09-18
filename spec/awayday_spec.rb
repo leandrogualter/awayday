@@ -89,6 +89,15 @@ describe 'The Awayday Submission App' do
     should_have_talk talk
   end
 
+  it "escapes the html tags to avoid js injection" do
+    malicious_talk = setup_a_malicious_talk
+
+    get '/talks'
+
+    last_response.should be_ok
+    last_response.body.should_not include("<script>")
+  end
+
   it "downloads the list of talks in csv format" do
     lightningtalk = setup_a_lightningtalk
     talk = setup_a_talk
@@ -105,12 +114,12 @@ describe 'The Awayday Submission App' do
   end
 
   def setup_a_lightningtalk
-    lightningtalker = Presenter.new :name => "Anna Lightning", 
+    lightningtalker = Presenter.new :name => "Anna Lightning",
                                     :email => "anna.thunder@awayday.com"
-    lightningtalk = Talk.new :title => "Kaboom, Thunder, Sparks & Life",
-                        :summary => "Thunder Thunder Thunder Thunder Thunder Thunder Thunder",
-                        :category => "Hobbies",
-                        :duration => 15
+    lightningtalk = Talk.new :title => "Kaboom, Thunder, Sparks and Life",
+                             :summary => "Thunder Thunder Thunder Thunder Thunder Thunder Thunder",
+                             :category => "Hobbies",
+                             :duration => 15
     lightningtalker.talks << lightningtalk
     lightningtalker.save!
 
@@ -128,6 +137,19 @@ describe 'The Awayday Submission App' do
     talker.save!
 
     talk
+  end
+
+  def setup_a_malicious_talk
+    malicioustalker = Presenter.new :name => "Michael Malicious",
+                                    :email => "michael@malicious.com"
+    malicioustalk = Talk.new :title => "Malicious Talk",
+                             :summary => "This summary is very malicious, look! <script>alert(\"javascript\");</script>",
+                             :category => "Non-Technical",
+                             :duration => 15
+    malicioustalker.talks << malicioustalk
+    malicioustalker.save!
+
+    malicioustalk
   end
 
 
