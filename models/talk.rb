@@ -7,7 +7,7 @@ class Talk
 
   belongs_to :presenter
 
-  DURATIONS = {:lightning => 15, :talk => 45}
+  DURATIONS = {:lightning => 15, :talk => 45, :workshop => 90}
 
   CATEGORIES = [
     "SIP",
