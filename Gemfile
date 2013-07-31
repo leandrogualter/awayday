@@ -1,8 +1,9 @@
-source :gemcutter
+source "https://rubygems.org"
+
 gem "sinatra"
 gem "haml"
 gem "sass"
-gem "mongoid", "~> 2.1"
+gem "mongoid", "~> 2.3.0"
 gem "bson_ext", "~> 1.3"
 gem "rack"
 gem "rack-flash"
@@ -12,9 +13,10 @@ gem "heroku"
 
 group :test do
   gem "rspec"
-  gem "ZenTest"
-  gem "autotest-fsevent"
   gem "rack-test"
   gem "cucumber"
   gem "capybara"
+  gem "tux"
+  gem "pry"
+  gem "pry-nav"
 end
