@@ -1,5 +1,5 @@
 require './awayday'
-# MongoDB configuration
+
 Mongoid.configure do |config|
   if ENV['MONGOLAB_URI']
     conn = Mongo::Connection.from_uri(ENV['MONGOLAB_URI'])
