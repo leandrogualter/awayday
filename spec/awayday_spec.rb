@@ -154,8 +154,6 @@ describe 'The Awayday Submission App' do
 
 
   def should_have_talk(talk)
-    last_response.body.should include("#{talk.presenter.name}")
-    last_response.body.should include("#{talk.presenter.email}")
     last_response.body.should include("#{talk.title}")
     last_response.body.should include("#{talk.summary}")
     last_response.body.should include("#{talk.category}")
