@@ -64,11 +64,3 @@ Then /^a message saying that I forgot the title of the talk$/ do
     all("li").any? {|li| li.should have_content "Can't be blank"}
   end
 end
-
-Then /^I will be told that I need to check my information for problems$/ do
-  pending # express the regexp above with the code you wish you had
-end
-
-Then /^I will be able to resubmit$/ do
-  pending # express the regexp above with the code you wish you had
-end
