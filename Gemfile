@@ -19,4 +19,6 @@ group :test do
   gem "tux"
   gem "pry"
   gem "pry-nav"
+  gem "guard"
+  gem "guard-rspec"
 end
