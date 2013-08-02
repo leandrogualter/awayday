@@ -10,7 +10,8 @@ class CsvHelper
         "Category",
         "Duration",
         "Presenter",
-        "Email"
+        "Email",
+        "Languages"
       ]
 
       talks.each do |talk|
@@ -20,7 +21,8 @@ class CsvHelper
           talk.category,
           talk.duration,
           talk.presenter.name,
-          talk.presenter.email
+          talk.presenter.email,
+          talk.languages.join(", ")
         ]
       end
     end

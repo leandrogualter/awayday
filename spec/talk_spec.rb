@@ -7,11 +7,13 @@ describe 'A Talk' do
     @talk = Talk.new :title => "The Title",
                      :summary => "The content should be big enough to let people evaluate it",
                      :category => "SIP",
-                     :duration => 45
+                     :duration => 45,
+                     :languages => ["English"]
+                     
     @presenter = Presenter.new :name => "John Presentation", :email => "john.presentation@awayday.com", :talks => [@talk]
   end
 
-  it "should have a title, a summary, a category, a duration and a presenter" do
+  it "should have title, summary, category, duration, language and presenter" do
     @talk.should be_valid
   end
 
@@ -64,6 +66,11 @@ describe 'A Talk' do
 
   it "should not be valid if there is nobody to present" do
     @talk.presenter = nil
+    @talk.should_not be_valid
+  end
+  
+  it "should not be valid if there are no languages selected" do
+    @talk.languages = nil
     @talk.should_not be_valid
   end
 

@@ -7,13 +7,15 @@ end
 
 Given /^my (.*) proposal has the following information$/ do |type, table|
   hashes = table.hashes.first
-  @talk = Talk.new :title => hashes['Title'], :summary => hashes['Summary'], :category => hashes['Category'], :duration => hashes['Duration']
-  @presenter.talks << @talk
-
-  fill_in 'Title', :with => @talk.title
-  fill_in 'Summary', :with => @talk.summary
-  select @talk.category, :from=>"category"
-  choose @talk.duration
+  
+  fill_in 'Title', :with => hashes['Title']
+  fill_in 'Summary', :with => hashes['Summary']
+  select hashes['Category'], :from=>"category"
+  choose hashes['Duration']
+  hashes['Languages'].split(", ").each do |lang|
+    check lang
+  end
+  
 end
 
 When /^I submit my (.*) proposal$/ do |proposal|

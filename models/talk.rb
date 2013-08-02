@@ -4,6 +4,7 @@ class Talk
   field :summary, type: String
   field :category, type: String
   field :duration, type: Integer
+  field :languages, type: Array
 
   belongs_to :presenter
 
@@ -19,6 +20,12 @@ class Talk
     "Health and Well Being",
     "Hobbies"
   ]
+  
+  LANGUAGES = [
+    "English",
+    "Portuguese",
+    "Spanish"
+  ]
 
   validates_presence_of :title
   validates_presence_of :summary
@@ -30,5 +37,6 @@ class Talk
   validates_inclusion_of :duration, in: DURATIONS.values
 
   validates_length_of :summary, within: 50..400
+  validates_length_of :languages, minimum: 1
 
 end

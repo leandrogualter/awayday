@@ -18,7 +18,9 @@ describe 'The Awayday Submission App' do
                             :title => "The Presentation",
                             :summary => "The content should be big enough to let people evaluate it",
                             :category => "SIP",
-                            :duration => 45 }
+                            :duration => 45,
+                            :languages => [ "English", "Spanish" ]
+                           }
 
     Talk.all.should have(1).items
     Presenter.all.should have(1).items
@@ -30,6 +32,7 @@ describe 'The Awayday Submission App' do
     talk.duration.should == 45
     talk.presenter.name.should == "John Presentation"
     talk.presenter.email.should == "john.presentation@awayday.com"
+    talk.languages.should == [ "English", "Spanish" ]
 
     last_response.should be_redirect
     last_response.body.should include('Congratulations John Presentation. Your proposal was sent.')
@@ -41,7 +44,9 @@ describe 'The Awayday Submission App' do
     talk = Talk.new :title => "The Talk",
                     :summary => "Talking Things Talking Things Talking Things Talking",
                     :category => "Non-Technical",
-                    :duration => 45
+                    :duration => 45,
+                    :languages => ["English"]
+                    
     talker.talks << talk
     talker.save!
 
@@ -50,7 +55,9 @@ describe 'The Awayday Submission App' do
                             :title => "The Presentation",
                             :summary => "The content should be big enough to let people evaluate it",
                             :category => "SIP",
-                            :duration => 45 }
+                            :duration => 45,
+                            :languages => ["English"]
+                           }
 
     Talk.all.should have(2).items
     Presenter.all.should have(1).item
@@ -68,7 +75,9 @@ describe 'The Awayday Submission App' do
                             :title => "The Presentation",
                             :summary => "A small on purpose to make it invalid",
                             :category => "SIP",
-                            :duration => 45 }
+                            :duration => 45,
+                            :languages => ["English"]
+                           }
 
     Talk.all.should have(0).items
     Presenter.all.should have(0).items
@@ -119,7 +128,8 @@ describe 'The Awayday Submission App' do
     lightningtalk = Talk.new :title => "Kaboom, Thunder, Sparks and Life",
                              :summary => "Thunder Thunder Thunder Thunder Thunder Thunder Thunder",
                              :category => "Hobbies",
-                             :duration => 15
+                             :duration => 15,
+                             :languages => ["English"]
     lightningtalker.talks << lightningtalk
     lightningtalker.save!
 
@@ -132,7 +142,8 @@ describe 'The Awayday Submission App' do
     talk = Talk.new :title => "The Talk",
                     :summary => "Talking Things Talking Things Talking Things Talking",
                     :category => "Non-Technical",
-                    :duration => 45
+                    :duration => 45,
+                    :languages => ["English"]
     talker.talks << talk
     talker.save!
 
@@ -145,19 +156,20 @@ describe 'The Awayday Submission App' do
     malicioustalk = Talk.new :title => "Malicious Talk",
                              :summary => "This summary is very malicious, look! <script>alert(\"javascript\");</script>",
                              :category => "Non-Technical",
-                             :duration => 15
+                             :duration => 15,
+                             :languages => ["English"]
     malicioustalker.talks << malicioustalk
     malicioustalker.save!
 
     malicioustalk
   end
 
-
   def should_have_talk(talk)
     last_response.body.should include("#{talk.title}")
     last_response.body.should include("#{talk.summary}")
     last_response.body.should include("#{talk.category}")
     last_response.body.should include("#{talk.duration} mins")
+    last_response.body.should include("#{talk.languages.join ", "}")
   end
 
   def should_have_csv_header
@@ -167,6 +179,7 @@ describe 'The Awayday Submission App' do
     last_response.body.should include("Duration")
     last_response.body.should include("Presenter")
     last_response.body.should include("Email")
+    last_response.body.should include("Languages")
   end
 
   def should_have_csv_row(talk)
@@ -176,5 +189,6 @@ describe 'The Awayday Submission App' do
     last_response.body.should include("#{talk.summary}")
     last_response.body.should include("#{talk.category}")
     last_response.body.should include("#{talk.duration}")
+    last_response.body.should include("#{talk.languages.join ", "}")
   end
 end

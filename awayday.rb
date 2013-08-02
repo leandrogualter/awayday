@@ -39,14 +39,21 @@ class AwayDayApp < Sinatra::Base
     redirect "/talks", flash[:error] = "Submissions closed." if deadline_reached?
 
     session[:params] ||= {}
-    haml :form, :locals => {:durations => Talk::DURATIONS, :categories => Talk::CATEGORIES, :params => session[:params]}
+    
+    haml :form, :locals => {
+      :durations => Talk::DURATIONS,
+      :categories => Talk::CATEGORIES,
+      :languages => Talk::LANGUAGES,
+      :params => session[:params]
+    }
   end
 
   post '/talk' do
     talk = Talk.new :title => params[:title],
       :summary => params[:summary],
       :category => params[:category],
-      :duration => params[:duration]
+      :duration => params[:duration],
+      :languages => params[:languages]
 
     presenter = Presenter.where(:name => params[:name], :email => params[:email]).first
     presenter ||= Presenter.new :name => params[:name], :email => params[:email]
