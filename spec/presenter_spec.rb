@@ -6,7 +6,7 @@ describe 'A Presenter' do
   before(:each) do
     @talk = Talk.new :title => "The Title",
                      :summary => "The content should be big enough to let people evaluate it",
-                     :category => "SIP",
+                     :category => "Non-Technical",
                      :duration => 45
 
     @presenter = Presenter.new :name => "John Presentation", :email => "john.presentation@awayday.com", :talks => [@talk]

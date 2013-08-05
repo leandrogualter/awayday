@@ -17,7 +17,7 @@ describe 'The Awayday Submission App' do
                             :email => "john.presentation@awayday.com",
                             :title => "The Presentation",
                             :summary => "The content should be big enough to let people evaluate it",
-                            :category => "SIP",
+                            :category => "Non-Technical",
                             :duration => 45,
                             :languages => [ "English", "Spanish" ]
                            }
@@ -28,7 +28,7 @@ describe 'The Awayday Submission App' do
     talk = Talk.first
     talk.title.should == "The Presentation"
     talk.summary.should == "The content should be big enough to let people evaluate it"
-    talk.category.should == "SIP"
+    talk.category.should == "Non-Technical"
     talk.duration.should == 45
     talk.presenter.name.should == "John Presentation"
     talk.presenter.email.should == "john.presentation@awayday.com"
@@ -54,7 +54,7 @@ describe 'The Awayday Submission App' do
                             :email => "john.presentation@awayday.com",
                             :title => "The Presentation",
                             :summary => "The content should be big enough to let people evaluate it",
-                            :category => "SIP",
+                            :category => "Non-Technical",
                             :duration => 45,
                             :languages => ["English"]
                            }
@@ -74,7 +74,7 @@ describe 'The Awayday Submission App' do
                             :email => "john.presentation@awayday.com",
                             :title => "The Presentation",
                             :summary => "A small on purpose to make it invalid",
-                            :category => "SIP",
+                            :category => "Non-Technical",
                             :duration => 45,
                             :languages => ["English"]
                            }
@@ -127,7 +127,7 @@ describe 'The Awayday Submission App' do
                                     :email => "anna.thunder@awayday.com"
     lightningtalk = Talk.new :title => "Kaboom, Thunder, Sparks and Life",
                              :summary => "Thunder Thunder Thunder Thunder Thunder Thunder Thunder",
-                             :category => "Hobbies",
+                             :category => "Non-Technical",
                              :duration => 15,
                              :languages => ["English"]
     lightningtalker.talks << lightningtalk

@@ -4,8 +4,8 @@ Feature: Talk submission form
   Scenario: Potential speaker registers his talk
     Given my name is Creil Naven and my email is creil.naven@awayday.com
     And my talk proposal has the following information
-    | Title   | Summary                                             | Category | Duration | Languages             |
-    | My Talk | My talk about talks that need a big enough summary! | SIP      | 45mins   | English, Portuguese   |
+    | Title   | Summary                                             | Category  | Duration | Languages             |
+    | My Talk | My talk about talks that need a big enough summary! | Technical | 45mins   | English, Portuguese   |
     When I submit my talk proposal
     Then I will be in the list of possible presenters
     And my talk proposal will be on the list of proposals
@@ -43,7 +43,7 @@ Feature: Talk submission form
     And I will see a message stating that something went wrong
     And a message saying that I forgot my name
 
-  Scenario: Potential speaker forget his name and the title of the presentation
+  Scenario: Potential speaker forgets his name and the title of the presentation
     Given my name is  and my email is carlo.paroli@awayday.com
     And my lightning talk proposal has the following information
     | Title       | Summary                                             | Category  | Duration | Languages             |
@@ -67,11 +67,5 @@ Feature: Talk submission form
 
     Examples:
     | category                      |
-    | SIP                           |
     | Technical                     |
     | Non-Technical                 |
-    | Entrepreuneurial              |
-    | Life Skills                   |
-    | Nothing to do with Technology |
-    | Health and Well Being         |
-    | Hobbies                       |

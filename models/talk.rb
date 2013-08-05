@@ -11,14 +11,8 @@ class Talk
   DURATIONS = {:lightning => 15, :talk => 45, :workshop => 90}
 
   CATEGORIES = [
-    "SIP",
     "Technical",
-    "Non-Technical",
-    "Entrepreuneurial",
-    "Life Skills",
-    "Nothing to do with Technology",
-    "Health and Well Being",
-    "Hobbies"
+    "Non-Technical"
   ]
   
   LANGUAGES = [
