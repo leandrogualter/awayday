@@ -22,6 +22,7 @@ class AwayDayApp < Sinatra::Base
     serve '/images', from: '/assets/images'
     serve '/fonts', from: '/assets/fonts'
 
+    css :hint, [ 'css/hint.css' ]
     css :awayday, [ 'css/awayday.css' ]
     css_compression :sass
   end
