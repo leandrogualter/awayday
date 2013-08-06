@@ -31,6 +31,6 @@ class Talk
   validates_inclusion_of :duration, in: DURATIONS.values
 
   validates_length_of :summary, within: 50..400
-  validates_length_of :languages, minimum: 1
+  validates_length_of :languages, minimum: 1, message: "Select at least one language"
 
 end

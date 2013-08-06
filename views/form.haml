@@ -24,7 +24,6 @@
         %label
           %input{:type => 'checkbox', :selected => params["lang_#{language}".to_sym], :name => 'languages[]', :value => language} #{language}
     
-    
     %label{:for=>'duration'} Duration
     #duration
       - durations.each do |type, duration|
