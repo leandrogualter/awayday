@@ -18,7 +18,7 @@
       - categories.each do |category|
         %option{:selected => category.eql?(params[:category])} #{category}
     
-    %label{:for=>'languages', :data => {:hint => 'Languages you could present in'}, :class => ["hint--rounded", "hint--bounce", "hint--right"]} Languages
+    %label{:for=>'languages', :data => {:hint => 'Mark all languages you could present in'}, :class => ["hint--rounded", "hint--bounce", "hint--right"]} Languages
     #languages
       - languages.each do |language|
         %label
