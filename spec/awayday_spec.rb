@@ -9,7 +9,7 @@ describe 'The Awayday Submission App' do
   it "shows the form" do
     get '/'
     last_response.should be_ok
-    last_response.body.should include('Away Day Brazil')
+    last_response.body.should include('Away Day South America')
   end
 
   it "saves the talk information" do
