@@ -11,6 +11,7 @@ fi
 
 mkdir -p $BUNDLE_PATH
 rm -rf vendor/bundle
+mkdir vendor
 ln -sf $BUNDLE_PATH vendor/bundle
 
 bundle install --path vendor/bundle --binstubs --clean
