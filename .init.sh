@@ -2,11 +2,11 @@
 
 set -e
 
+BUNDLE_PATH=/tmp/.bundle-$(basename $(pwd))
 export BUNDLE_JOBS="${BUNDLE_JOBS:=4}"
-if [ -z "$SNAP_CI" ]; then
-  BUNDLE_PATH=/tmp/.bundle-$(basename $(pwd))
-else
-  BUNDLE_PATH=$HOME/.bundle;
+if [ ! -z "$SNAP_CI" ]
+then
+  BUNDLE_PATH=$HOME/.bundle
 fi
 
 mkdir -p $BUNDLE_PATH
