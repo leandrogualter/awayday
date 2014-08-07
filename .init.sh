@@ -13,14 +13,4 @@ mkdir -p $BUNDLE_PATH
 rm -rf vendor/bundle
 ln -sf $BUNDLE_PATH vendor/bundle
 
-export NOKOGIRI_USE_SYSTEM_LIBRARIES=1
-
-bundle check 1>/dev/null
-
-if [ $? -ne 0 ]; then
-  if [ -d "./vendor/bundle" ]; then
-    rm -rf vendor/bundle;
-  fi
-
-  bundle install --path vendor/bundle --binstubs --clean
-fi
+bundle install --path vendor/bundle --binstubs --clean

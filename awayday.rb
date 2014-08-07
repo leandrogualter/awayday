@@ -18,9 +18,9 @@ class AwayDayApp < Sinatra::Base
   DEADLINE = Time.new(2015, 1, 1, 9, 0, 0, "-03:00")
 
   assets do
-    serve '/css', from: '/assets/css'
-    serve '/images', from: '/assets/images'
-    serve '/fonts', from: '/assets/fonts'
+    serve '/css', from: 'assets/css'
+    serve '/images', from: 'assets/images'
+    serve '/fonts', from: 'assets/fonts'
 
     css :hint, [ 'css/hint.css' ]
     css :awayday, [ 'css/awayday.css' ]
