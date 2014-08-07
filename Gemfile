@@ -1,5 +1,4 @@
 source "https://rubygems.org"
-ruby "1.9.2"
 
 gem "sinatra"
 gem "haml"
@@ -11,6 +10,7 @@ gem "rack-flash"
 gem "sinatra-redirect-with-flash"
 gem "sinatra-assetpack", :require => "sinatra/assetpack"
 gem "heroku"
+gem "rake"
 
 group :test do
   gem "rspec"

@@ -50,7 +50,7 @@ GEM
       term-ansicolor (~> 1.0.5)
     i18n (0.6.4)
     jsmin (1.0.1)
-    json (1.6.0)
+    json (1.7.7)
     json_pure (1.6.0)
     launchy (2.0.5)
       addressable (~> 2.2.6)
@@ -80,6 +80,7 @@ GEM
       rack
     rack-test (0.6.1)
       rack (>= 1.0)
+    rake (0.9.6)
     rb-fsevent (0.9.3)
     rb-inotify (0.9.0)
       ffi (>= 0.5.0)
@@ -151,6 +152,7 @@ DEPENDENCIES
   rack
   rack-flash
   rack-test
+  rake
   rspec
   sass
   sinatra

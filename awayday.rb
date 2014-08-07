@@ -15,7 +15,7 @@ class AwayDayApp < Sinatra::Base
   enable :sessions
   use Rack::Flash, :sweep => true
 
-  DEADLINE = Time.new(2013, 8, 26, 9, 0, 0, "-03:00")
+  DEADLINE = Time.new(2015, 1, 1, 9, 0, 0, "-03:00")
 
   assets do
     serve '/css', from: '/assets/css'
@@ -113,4 +113,3 @@ class AwayDayApp < Sinatra::Base
   end
 
 end
-
