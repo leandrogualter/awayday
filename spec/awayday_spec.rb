@@ -46,7 +46,7 @@ describe 'The Awayday Submission App' do
                     :category => "Non-Technical",
                     :duration => 45,
                     :languages => ["English"]
-                    
+
     talker.talks << talk
     talker.save!
 

@@ -14,6 +14,7 @@ gem "rake"
 
 group :test do
   gem "rspec"
+  gem 'rspec-collection_matchers'
   gem "rack-test"
   gem "cucumber"
   gem "capybara"

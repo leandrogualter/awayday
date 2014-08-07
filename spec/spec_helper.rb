@@ -2,6 +2,7 @@ require File.join(File.dirname(__FILE__), '..', 'awayday')
 require 'sinatra'
 require 'rack/test'
 require 'rspec'
+require 'rspec/collection_matchers'
 
 include Rack::Test::Methods
 
