@@ -40,7 +40,7 @@ class AwayDayApp < Sinatra::Base
     redirect "/talks", flash[:error] = "Submissions closed." if deadline_reached?
 
     session[:params] ||= {}
-    
+
     haml :form, :locals => {
       :durations => Talk::DURATIONS,
       :categories => Talk::CATEGORIES,
