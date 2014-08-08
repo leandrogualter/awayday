@@ -1,3 +1,5 @@
+require 'pry'
+require 'securerandom'
 require File.join(File.dirname(__FILE__), 'spec_helper')
 
 describe 'The Awayday Submission App' do
@@ -89,7 +91,6 @@ describe 'The Awayday Submission App' do
   it "lists the talks" do
     lightningtalk = setup_a_lightningtalk
     talk = setup_a_talk
-
     get '/talks'
 
     last_response.should be_ok
@@ -118,35 +119,31 @@ describe 'The Awayday Submission App' do
     last_response['Content-Disposition'].should =~ /attachment; filename=\"talks_\d{1,2}-\d{1,2}-\d{4}\.csv\"/
 
     should_have_csv_header
+
     should_have_csv_row lightningtalk
     should_have_csv_row talk
   end
 
   def setup_a_lightningtalk
-    lightningtalker = Presenter.new :name => "Anna Lightning",
-                                    :email => "anna.thunder@awayday.com"
-    lightningtalk = Talk.new :title => "Kaboom, Thunder, Sparks and Life",
-                             :summary => "Thunder Thunder Thunder Thunder Thunder Thunder Thunder",
-                             :category => "Non-Technical",
-                             :duration => 15,
-                             :languages => ["English"]
-    lightningtalker.talks << lightningtalk
-    lightningtalker.save!
-
-    lightningtalk
+    create_talk_with_presenter_for_duration 15
   end
 
   def setup_a_talk
-    talker = Presenter.new :name => "John Presentation",
-                           :email => "john.presentation@awayday.com"
-    talk = Talk.new :title => "The Talk",
-                    :summary => "Talking Things Talking Things Talking Things Talking",
-                    :category => "Non-Technical",
-                    :duration => 45,
-                    :languages => ["English"]
-    talker.talks << talk
-    talker.save!
+    create_talk_with_presenter_for_duration 45
+  end
 
+  def create_talk_with_presenter_for_duration(duration)
+    talker = Presenter.new :name => random_string,
+                           :email => "#{random_string}@awayday.com"
+
+
+    talk = talker.talks.build  :title => random_string,
+                              :summary => random_string * 10,
+                              :category => "Non-Technical",
+                              :duration => duration,
+                              :languages => ["English"]
+    talker.save!
+    talk.save!
     talk
   end
 
@@ -190,5 +187,9 @@ describe 'The Awayday Submission App' do
     last_response.body.should include("#{talk.category}")
     last_response.body.should include("#{talk.duration}")
     last_response.body.should include("#{talk.languages.join ", "}")
+  end
+
+  def random_string
+    SecureRandom.hex
   end
 end

@@ -8,13 +8,13 @@ class Talk
 
   belongs_to :presenter
 
-  DURATIONS = {:lightning => 15, :talk => 45, :workshop => 90}
+  DURATIONS = {:lightning => 15, :talk => 45}
 
   CATEGORIES = [
     "Technical",
     "Non-Technical"
   ]
-  
+
   LANGUAGES = [
     "English",
     "Portuguese",
