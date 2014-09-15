@@ -8,7 +8,13 @@ describe 'The Awayday Submission App' do
     Mongoid.master.collections.select {|c| c.name !~ /system/ }.each(&:drop)
   end
 
-  it "shows the form" do
+  it "redirects to talks list" do
+    get '/'
+    last_response.should be_redirect
+    last_response.location.should include('/talks')
+  end
+
+  xit "shows the form" do
     get '/'
     last_response.should be_ok
     last_response.body.should include('Away Day South America')
